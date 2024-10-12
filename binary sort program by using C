@@ -1,0 +1,49 @@
+//binary sort program by using C
+
+#include <stdio.h>
+int main()
+{
+ int n , i;
+	
+ printf("Enter array size : ");
+ scanf("%d",&n);
+	
+ int data[n], loc = -1;
+ int lb = 0, ub = n-1;
+ int beg, mid, end, val;
+	
+ printf("Enter %d numbers : ",n);
+ for(i = 0; i < n; i++)
+ scanf("%d",&data[i]);
+	
+ printf("Enter a value to search : ");
+ scanf("%d",&val);
+	
+ beg = lb;
+ end = ub;
+	
+ while(beg <= end)
+ {
+  mid = (beg + end)/2;
+  
+  if(data[mid] == val)
+  {
+   loc = mid;
+   break;
+  }
+  else
+  {
+   if(data[mid] > val)
+   end = mid-1;
+   else
+   beg = mid+1;
+  }
+ } 
+	
+ if(loc == -1)
+ printf("value not found...");
+ else
+ printf("found at location : %d",loc);
+	
+ return 0;
+}
