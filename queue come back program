@@ -1,0 +1,74 @@
+#include <stdio.h>
+#define MAX 5
+
+int main() {
+	
+	
+   int item, DATA[MAX], REAR = -1, FRONT = -1, OPTION, i;
+
+   printf("Operations on queue...\n");
+   printf("1. ENQUEUE\n");
+    printf("2. DEQUEUE\n");
+    printf("3. TRAVERSE\n");
+    printf("4. EXIT\n");
+    
+    
+   do {
+        printf("Enter Valid Option...\n");
+        scanf("%d", &OPTION);
+
+   switch (OPTION) {
+            case 1: // Q INSERT
+                if (REAR >= (MAX - 1)) {
+                    printf("OVERFLOW.. QUEUE IS FULL\n");
+                } else {
+                    printf("Enter value to insert: ");
+                    scanf("%d", &item);
+
+   if (FRONT == -1) {
+                        FRONT = 0;
+                    }
+                    REAR++;
+                    DATA[REAR] = item;
+                    printf("Inserted Successfully ...\n");
+                }
+                break;
+
+   case 2: // QUEUE DELETE
+                if (FRONT == -1) {
+                    printf("Queue is empty: \n");
+                } else {
+                    item = DATA[FRONT];
+                    printf("Deleted item is = %d\n", item);
+                    if (FRONT == REAR) {
+                        FRONT = -1;
+                        REAR = -1;
+                    } else {
+                        FRONT++;
+                    }
+                }
+                break;
+
+   case 3: // Q Display
+                if (FRONT == -1) {
+                    printf("Queue is empty: \n");
+                } else {
+                    printf("\nQUEUE: ");
+                    for (i = FRONT; i <= REAR; i++)
+                        printf("%d ", DATA[i]);
+                    printf("\n");
+                }
+                break;
+
+   case 4: // EXIT
+                printf("Exiting...\n");
+                break;
+
+   default:
+                printf("Invalid option, please try again.\n");
+                break;
+        }
+    } while (OPTION != 4);
+
+   return 0;
+}
